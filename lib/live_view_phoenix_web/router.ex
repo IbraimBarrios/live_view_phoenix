@@ -17,7 +17,7 @@ defmodule LiveViewPhoenixWeb.Router do
   scope "/", LiveViewPhoenixWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PageController, :index #page router
   end
 
   # Other scopes may use custom stacks.
