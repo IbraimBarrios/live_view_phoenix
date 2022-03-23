@@ -47,6 +47,7 @@ defmodule LiveViewPhoenix.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
+      {:number, "~> 1.0"}, # add package
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"}
     ]
