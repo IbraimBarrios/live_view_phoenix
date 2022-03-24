@@ -1,6 +1,6 @@
 defmodule LiveViewPhoenix.Stores do
   def search_by_zip(zip) do
-    :timer.sleep(2000) #timpo de respuesta de 2 segundos
+    :timer.sleep(2000) #timer: 2 second response time
     list_stores()
     |> Enum.filter(&(&1.zip == zip))
   end

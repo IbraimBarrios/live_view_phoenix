@@ -7,7 +7,7 @@ defmodule LiveViewPhoenixWeb.SearchLive do
     socket =
       assign(socket,
         zip: "",
-        stores: Stores.list_stores(),
+        stores: [],
         loading: false
       )
 
@@ -89,7 +89,7 @@ defmodule LiveViewPhoenixWeb.SearchLive do
       [] ->
         socket =
           socket
-          |> put_flash(:info, "No stores matching\"#{zip}\"") #muestra un mensaje en pantalla cuando no encuentra el codido postal
+          |> put_flash(:info, "No stores matching\"#{zip}\"") #shows a message on the screen when it does not find the postal code
           |> assign(stores: [], loading: false)
 
         {:noreply, socket}
