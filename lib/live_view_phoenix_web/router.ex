@@ -19,6 +19,7 @@ defmodule LiveViewPhoenixWeb.Router do
 
     get "/", PageController, :index #page router
     live "/light", LightLive
+    live "/license", LicenseLive
     live "/sales-dashboard", SalesDashboardLive
   end
 
