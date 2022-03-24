@@ -44,7 +44,7 @@ defmodule LiveViewPhoenix.Stores do
         street: "Us 441 s avenida",
         phone_number: "576-979-0981",
         city: "Orlando, FL",
-        zip: "32801",
+        zip: "33124",
         open: true,
         hours: "9am - 6pm M-F"
       },

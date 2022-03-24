@@ -16,15 +16,14 @@ defmodule LiveViewPhoenixWeb.SearchLive do
 
   def render(assigns) do
     ~H"""
-    <h1>Find a Store</h1>
+    <h1 class="text-purple-900">Find a Store by Zip Code</h1>
     <div id="search">
 
     <form phx-submit="zip-search">
       <input type="text" name="zip" value={@zip}
               placeholder="Zip code"
               autofocus autocomplete="off"
-
-
+              readonly={@loading}
               />
 
       <button type="submit">
@@ -86,12 +85,29 @@ defmodule LiveViewPhoenixWeb.SearchLive do
   end
 
   def handle_info({:run_zip_search, zip}, socket) do
+    case Stores.search_by_zip(zip) do
+      [] ->
         socket =
-          assign(socket,
-          stores: Stores.search_by_zip(zip),
-          loading: false
-          )
+          socket
+          |> put_flash(:info, "No stores matching\"#{zip}\"") #muestra un mensaje en pantalla cuando no encuentra el codido postal
+          |> assign(stores: [], loading: false)
+
         {:noreply, socket}
+
+        stores ->
+          socket = assign(socket, stores: stores, loading: false)
+          {:noreply, socket}
     end
+  end
+
+
+  # def handle_info({:run_zip_search, zip}, socket) do
+  #       socket =
+  #         assign(socket,
+  #         stores: Stores.search_by_zip(zip),
+  #         loading: false
+  #         )
+  #       {:noreply, socket}
+  #   end
 
 end
