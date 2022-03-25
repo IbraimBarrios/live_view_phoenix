@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :live_view_phoenix, LiveViewPhoenix.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "development",
+  password: "development",
   hostname: "localhost",
-  database: "live_view_phoenix_dev",
+  database: "liveview_phoenix",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
