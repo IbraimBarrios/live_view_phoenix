@@ -34,7 +34,7 @@ defmodule LiveViewPhoenix.Stores do
         name: "Las Rosas",
         street: "W 41 st st avenida",
         phone_number: "535-745-0875",
-        city: "Miami, FL",
+        city: "Florida, FL",
         zip: "33124",
         open: true,
         hours: "8am - 6pm M-F"
@@ -43,7 +43,7 @@ defmodule LiveViewPhoenix.Stores do
         name: "Valero",
         street: "Us 441 s avenida",
         phone_number: "576-979-0981",
-        city: "Orlando, FL",
+        city: "Florida, FL",
         zip: "33124",
         open: true,
         hours: "9am - 6pm M-F"
