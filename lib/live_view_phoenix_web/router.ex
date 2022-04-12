@@ -24,6 +24,7 @@ defmodule LiveViewPhoenixWeb.Router do
     live "/search", SearchLive
     live "/autocomplete", AutocompleteLive
     live "/filter", Filterlive
+    live "/servers", Serverslive
   end
 
   # Other scopes may use custom stacks.
