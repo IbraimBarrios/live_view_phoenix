@@ -17,14 +17,16 @@ defmodule LiveViewPhoenixWeb.Serverslive do
 
 
   def render(assigns) do
-    ~L"""
+    ~H"""
     <h1>Servers</h1>
     <div id="servers">
       <div class="sidebar">
         <nav>
         <%= for server <- @servers do %>
           <a href="#"
-          class="<%= if server == @selected_server, do: 'active'%>"
+          phx-click="show"
+          phx-value-id={server.id}
+          class={"#{if server == @selected_server, do: 'active'}"}
           >
           <img src="/images/server.svg">
           <%= server.name %>
@@ -37,7 +39,7 @@ defmodule LiveViewPhoenixWeb.Serverslive do
           <div class="card">
             <div class="header">
               <h2><%= @selected_server.name %></h2>
-              <span class="<%= @selected_server.status %>">
+              <span class={@selected_server.status}>
                 <%= @selected_server.status %>
               </span>
             </div>
@@ -73,6 +75,19 @@ defmodule LiveViewPhoenixWeb.Serverslive do
       </div>
     </div>
     """
+  end
+
+  def handle_event("show", %{"id" => id}, socket) do
+    id = String.to_integer(id)
+
+    server = Servers.get_server!(id)
+
+    socket =
+      assign(socket,
+      selected_server: server
+      )
+
+      {:noreply, socket}
   end
 
 
