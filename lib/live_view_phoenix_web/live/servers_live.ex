@@ -23,14 +23,24 @@ defmodule LiveViewPhoenixWeb.Serverslive do
       <div class="sidebar">
         <nav>
         <%= for server <- @servers do %>
-          <a href="#"
+        <div>
+        <%= live_patch link_body(server),
+            to: Routes.live_path(
+              @socket,
+              __MODULE__,
+              id: server.id
+        ),
+        class: if server == @selected_server, do: "active" %>
+        </div>
+
+         <!-- <a href="#"
           phx-click="show"
           phx-value-id={server.id}
           class={"#{if server == @selected_server, do: 'active'}"}
           >
           <img src="/images/server.svg">
           <%= server.name %>
-          </a>
+          </a>-->
           <% end %>
         </nav>
       </div>
@@ -77,7 +87,7 @@ defmodule LiveViewPhoenixWeb.Serverslive do
     """
   end
 
-  def handle_event("show", %{"id" => id}, socket) do
+  def handle_params(%{"id" => id}, _url, socket) do
     id = String.to_integer(id)
 
     server = Servers.get_server!(id)
@@ -89,6 +99,33 @@ defmodule LiveViewPhoenixWeb.Serverslive do
 
       {:noreply, socket}
   end
+
+  def handle_params(_, _url,socket) do
+    {:noreply, socket}
+  end
+
+  defp link_body(server) do
+    assigns = %{name: server.name}
+
+    ~H"""
+    <img src="/images/server.svg">
+    <%= @name %>
+    """
+  end
+
+
+  # def handle_event("show", %{"id" => id}, socket) do
+  #   id = String.to_integer(id)
+
+  #   server = Servers.get_server!(id)
+
+  #   socket =
+  #     assign(socket,
+  #     selected_server: server
+  #     )
+
+  #     {:noreply, socket}
+  # end
 
 
 end
