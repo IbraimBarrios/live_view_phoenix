@@ -40,8 +40,11 @@ defmodule LiveViewPhoenix.Donations do
 
   """
 
+  #funcion de paginacion haciendo referencia a la BD.
   def list_donations(criteria) when is_list(criteria) do
     query = from(d in Donation)
+    hola = "hola"
+    IO.puts "#{hola}"
 
     Enum.reduce(criteria, query, fn
       {:paginate, %{page: page, per_pege: per_pege}}, query ->
