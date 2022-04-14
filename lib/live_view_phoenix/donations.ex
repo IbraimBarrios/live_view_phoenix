@@ -9,7 +9,7 @@ defmodule LiveViewPhoenix.Donations do
   alias LiveViewPhoenix.Donations.Donation
 
   def almost_expired?(dination) do
-    dination.days_util_expires <= 10
+    dination.days_until_expires <= 10
   end
 
   @doc """
@@ -55,22 +55,6 @@ defmodule LiveViewPhoenix.Donations do
       end)
       |> Repo.all()
   end
-
-#   def list_donations(criteria) when is_list(criteria) do
-#     query = from(d in Donation)
-
-#     Enum.reduce(criteria, query, fn
-#       {:paginate, %{page: page, per_page: per_page}}, query ->
-#         from q in query,
-#           offset: ^((page - 1) * per_page),
-#           limit: ^per_page
-
-#       {:sort, %{sort_by: sort_by, sort_order: sort_order}}, query
-#  ->
-#         from q in query, order_by: [{^sort_order, ^sort_by}]
-#     end)
-#     |> Repo.all()
-#   end
 
   def get_donation!(id), do: Repo.get!(Donation, id)
 
