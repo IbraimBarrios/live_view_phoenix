@@ -58,7 +58,9 @@ defmodule LiveViewPhoenixWeb.SortLive do
         to: Routes.live_path(socket,
         __MODULE__,
         page: socket.assigns.options.page,
-        per_page: per_page
+        per_page: per_page,
+        sort_by: socket.assigns.options.sort_by,
+        sort_order: socket.assigns.options.sort_order
       ))
 
     {:noreply, socket}
@@ -68,16 +70,56 @@ defmodule LiveViewPhoenixWeb.SortLive do
     if Donations.almost_expired?(donation), do: "eat-now", else: "fresh"
   end
 
-  defp pagination_link(socket, text, page, per_page, class) do
+  defp pagination_link(socket, text, page, per_page, sort_by, sort_order, class) do
+    IO.puts("options: #{sort_by}, per_page: #{per_page}")
     live_patch(text,
                 to: Routes.live_path(
                   socket,
                   __MODULE__,
                   page: page,
-                  per_pege: per_page
+                  per_page: per_page,
+                  sort_by: sort_by,
+                  sort_order: sort_order
                 ),
                 class: class
     )
+  end
+
+  defp sort_link(socket, text, sort_by, options) do
+    text =
+      if sort_by == options.sort_by do
+        IO.puts("entro: #{options.sort_by}, entro:  options.sort_order : #{options.sort_order}")
+        text <> icon(options.sort_order)
+      else
+        IO.puts("No entro:")
+        text
+      end
+
+    live_patch text,
+                to: Routes.live_path(
+                  socket,
+                  __MODULE__,
+                  sort_by: sort_by,
+                  sort_order: toggle_sort_order(options.sort_order),
+                  page: options.page,
+                  per_page: options.per_pege
+                )
+  end
+
+  defp toggle_sort_order(:asc) do
+    :desc
+  end
+
+  defp toggle_sort_order(:desc) do
+    :asc
+  end
+
+  defp icon(:asc) do
+    " ˅"
+  end
+
+  defp icon(:desc) do
+    " ˄"
   end
 
 end

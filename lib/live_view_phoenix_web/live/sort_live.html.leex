@@ -12,10 +12,11 @@
           <thead>
             <tr>
               <th class="item">
-                Item
+              <%= sort_link(@socket, "Item", :item, @options)%>
               </th>
               <th>
-                <%= live_patch "Quantity",
+              <%= sort_link(@socket, "Quantity", :quantity, @options)%>
+                <!--<%= live_patch "Quantity",
                 to: Routes.live_path(
                   @socket,
                   __MODULE__,
@@ -24,10 +25,11 @@
                   page: @options.page,
                   per_pege: @options.per_pege
                 )
-    %>
+    %>-->
               </th>
               <th>
-                Days Until Expires
+              <%= sort_link(@socket, "Days Until Expires", :days_until_expires, @options)%>
+
               </th>
             </tr>
           </thead>
@@ -53,19 +55,31 @@
         <div class="footer">
           <div class="pagination">
           <%= if @options.page > 1 do %>
-          <%= pagination_link(@socket, "Previous",
-          @options.page - 1, @options, "previous") %>
+          <%= pagination_link(@socket,
+                               "Previous",
+                               @options.page - 1,
+                               @options.per_pege,
+                                @options.sort_by,
+                                @options.sort_order,
+                               "previous") %>
           <%= end %>
 
           <%= for i <- (@options.page - 2)..(@options.page + 2), i > 0 do %>
           <%= pagination_link(@socket,
                                 i,
                                 i,
-                                @options,
+                                @options.per_pege,
+                                @options.sort_by,
+                                @options.sort_order,
                                 (if i == @options.page, do: "active")) %>
           <%= end %>
-          <%= pagination_link(@socket, "Next",
-          @options.page + 1, @options, "next") %>
+          <%= pagination_link(@socket,
+                                "Next",
+                                @options.page + 1,
+                                @options.per_pege,
+                                @options.sort_by,
+                                @options.sort_order,
+                                "next") %>
           </div>
         </div>
       </div>
