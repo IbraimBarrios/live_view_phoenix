@@ -6,12 +6,44 @@ defmodule LiveViewPhoenixWeb.VolunteersLive do
 
   def mount(_params, _session, socket) do
     volunteers = Volunteers.list_volunteers()
+    changeset = Volunteers.change_volunteer(%Volunteer{})
 
     socket =
       assign(socket,
-        volunteers: volunteers
+        volunteers: volunteers,
+        changeset: changeset
       )
 
     {:ok, socket}
+  end
+
+  # def render(assigns) do
+  #   ~H"""
+
+  #   """
+  # end
+
+  def handle_event("save", %{"volunteer" => params}, socket) do
+    case Volunteers.create_volunteer(params) do
+      {:ok, volunteer} ->
+        socket =
+          update(
+            socket,
+            :volunteers,
+            fn volunteers -> [volunteer | volunteers] end
+          )
+
+        changeset = Volunteers.change_volunteer(%Volunteer{})
+
+        socket = assign(socket, changeset: changeset)
+
+        :timer.sleep(500)
+
+        {:noreply, socket}
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        socket = assign(socket, changeset: changeset)
+        {:noreply, socket}
+    end
   end
 end
