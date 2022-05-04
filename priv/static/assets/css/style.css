@@ -1,0 +1,67 @@
+.form-checkin {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  border: 1px solid;
+  border-style: dashed;
+  padding: 1rem;
+}
+
+.field input {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #8a8e89;
+}
+
+.field span{
+  margin: 0;
+}
+
+.form-checkin button {
+  color: white;
+  font-weight: 600;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #53aa41;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.volunteer {
+  background-color: white;
+  padding: 1rem;
+  border-top-width: 1px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.name {
+  color: rgba(104, 117, 245);
+  font-weight: bold;
+}
+
+.phone {
+  display: flex;
+}
+
+.phone img {
+  position: relative;
+  right: 5px;
+}
+
+.volunteer button {
+  color: white;
+  font-weight: 600;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgba(104, 117, 245, var(--tw-bg-opacity));
+  border-radius: 5px;
+  cursor: pointer;
+}
