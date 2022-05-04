@@ -23,7 +23,8 @@ erl_crash.dump
 live_view_phoenix-*.tar
 
 # Ignore assets that are produced by build tools.
-/priv/static/assets/
+/priv/static/assets/app.css
+/priv/static/assets/app.js
 
 # Ignore digested assets cache.
 /priv/static/cache_manifest.json
