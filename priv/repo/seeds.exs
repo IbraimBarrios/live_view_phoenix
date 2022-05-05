@@ -10,13 +10,12 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-
-
-#rellena la base de datos en la tabla (boats)
+# rellena la base de datos en la tabla (boats)
 alias LiveViewPhoenix.Repo
 alias LiveViewPhoenix.Boats.Boat
 alias LiveViewPhoenix.Servers.Server
 alias LiveViewPhoenix.Donations.Donation
+alias LiveViewPhoenix.PizzaOrders.PizzaOrder
 
 %Boat{
   model: "1760 Retriever Jon Deluxe",
@@ -57,6 +56,7 @@ alias LiveViewPhoenix.Donations.Donation
   image: "/images/boats/2050-authority.jpg"
 }
 |> Repo.insert!()
+
 %Boat{
   model: "Deep Sea Elite",
   price: "$$$",
@@ -104,6 +104,7 @@ alias LiveViewPhoenix.Donations.Donation
   image: "/images/boats/rs-feva.jpg"
 }
 |> Repo.insert!()
+
 %Boat{
   model: "RS Cat 16",
   price: "$$",
@@ -127,6 +128,7 @@ alias LiveViewPhoenix.Donations.Donation
   image: "/images/boats/yamaha-212x.jpg"
 }
 |> Repo.insert!()
+
 %Boat{
   model: "Glastron GT180",
   price: "$",
@@ -263,13 +265,51 @@ donation_items = [
 ]
 
 for _i <- 1..100 do
-  {emoji,item} = Enum.random(donation_items)
+  {emoji, item} = Enum.random(donation_items)
 
   %Donation{
     emoji: emoji,
     item: item,
     quantity: Enum.random(1..20),
     days_until_expires: Enum.random(1..30)
+  }
+  |> Repo.insert!()
+end
+
+toppings = [
+  "Chicken",
+  "Basil",
+  "Garlic",
+  "Bacon",
+  "Cheese",
+  "Salmon",
+  "Shrimp",
+  "Broccoli",
+  "Onions",
+  "Tomatoes",
+  "Mushrooms",
+  "Pineapples",
+  "Eggplants",
+  "Avocados",
+  "Peppers",
+  "Pepperonis",
+  "Spinach",
+  "Pineapple",
+  "Meat"
+]
+
+for _i <- 1..500 do
+  [topping1, topping2] =
+    toppings
+    |> Enum.shuffle()
+    |> Enum.take(2)
+
+  pizza = "#{Faker.Pizza.size()} #{Faker.Pizza.style()} with
+     #{topping1} and #{topping2}"
+
+  %PizzaOrder{
+    username: Faker.Internet.user_name(),
+    pizza: pizza
   }
   |> Repo.insert!()
 end
