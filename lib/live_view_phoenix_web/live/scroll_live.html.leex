@@ -1,0 +1,28 @@
+<div id="scroll-pizza-orders">
+    <h1>Pizza orders</h1>
+    <div id="orders">
+        <%= for order <- @order do %>
+            <div class="order">
+                <div class="id" id="<%= order.id %>">
+                    <%= order.id %>
+                </div>
+                <div class="package">
+                    <div class="pizza">
+                        <%= order.pizza %>
+                    </div>
+                    <div>
+                        ordered by:
+                        <span class="username">
+                            <%= order.username%>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+    </div>
+    <div id="footer">
+        <div class="">
+            Loading More...
+        </div>
+    </div>
+</div>

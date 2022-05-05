@@ -1,0 +1,35 @@
+#scroll-pizza-orders .order {
+  display: flex;
+  background-color: white;
+  padding: 1rem;
+  border-top-width: 1px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 20px #ddd;
+}
+#scroll-pizza-orders #orders {
+  width: 60%;
+  margin: 1rem auto;
+}
+
+#scroll-pizza-orders .id {
+  width: 60px;
+  height: 40px;
+  margin-top: 5px;
+  background-color: #cfd0cf;
+  border-radius: 20px;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+#scroll-pizza-orders .package {
+  width: 100%;
+  margin-left: 20px;
+}
+
+#scroll-pizza-orders .pizza {
+  font-weight: bold;
+}
