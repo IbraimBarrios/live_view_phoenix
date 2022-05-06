@@ -21,11 +21,11 @@ defmodule LiveViewPhoenix.PizzaOrders do
     Repo.all(PizzaOrder)
   end
 
-  def list_pizza_orders(page: page, per_page: per_page) do
+  def list_pizza_orders(limit: limit) do
+    :timer.sleep(1000)
     query =
       from p in PizzaOrder,
-        offset: ^((page - 1) * per_page),
-        limit: ^per_page,
+        limit: ^limit,
         order_by: [{:desc, :id}]
 
     Repo.all(query)

@@ -1,9 +1,9 @@
 <div id="scroll-pizza-orders">
     <h1>Pizza orders</h1>
     <div id="orders">
-        <%= for order <- @order do %>
+        <%= for order <- @orders do %>
             <div class="order">
-                <div class="id" id="<%= order.id %>">
+                <div id="<%= order.id %>" class="id">
                     <%= order.id %>
                 </div>
                 <div class="package">
@@ -20,9 +20,9 @@
             </div>
             <% end %>
     </div>
-    <div id="footer">
-        <div class="">
-            Loading More...
+    <div id="footer" phx-hook="InfiniteScroll">
+        <div class="loader">
+        Loading More...
         </div>
     </div>
 </div>

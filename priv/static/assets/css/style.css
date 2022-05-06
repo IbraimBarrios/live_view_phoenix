@@ -33,3 +33,15 @@
 #scroll-pizza-orders .pizza {
   font-weight: bold;
 }
+
+#scroll-pizza-orders #footer {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+#scroll-pizza-orders #footer button {
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  background-color: blue;
+}
