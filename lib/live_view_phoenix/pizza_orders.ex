@@ -23,6 +23,7 @@ defmodule LiveViewPhoenix.PizzaOrders do
 
   def list_pizza_orders(limit: limit) do
     :timer.sleep(1000)
+
     query =
       from p in PizzaOrder,
         limit: ^limit,

@@ -27,23 +27,22 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
-let Hooks = {}
+let Hooks = {};
 
 Hooks.InfiniteScroll = {
-    mounted(){
-        this.observer = new IntersectionObserver(entries => {
-            const entry = entries[0];
-            if (entry.isIntersecting){
-                this.pushEvent("load-more")
-            }
-        });
-        this.observer.observe(this.el);
-    },
-      destroyed() {
-        this.observer.disconnect();
+  mounted() {
+    this.observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        this.pushEvent("load-more");
       }
-
-}
+    });
+    this.observer.observe(this.el);
+  },
+  destroyed() {
+    this.observer.disconnect();
+  },
+};
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, params: {_csrf_token: csrfToken}})
