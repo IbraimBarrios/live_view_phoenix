@@ -27,6 +27,7 @@ defmodule LiveViewPhoenixWeb.Router do
     live "/servers", Serverslive
     live "/paginate", PaginateLive
     live "/sort", SortLive
+    live "/volunteers", VolunteersLive
   end
 
   # Other scopes may use custom stacks.
