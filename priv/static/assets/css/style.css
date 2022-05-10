@@ -13,7 +13,7 @@
   border: 1px solid #8a8e89;
 }
 
-.field span{
+.field span {
   margin: 0;
 }
 
@@ -64,4 +64,28 @@
   background-color: rgba(104, 117, 245, var(--tw-bg-opacity));
   border-radius: 5px;
   cursor: pointer;
+}
+
+.pounds {
+  margin-bottom: 0.5rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.border-dashed {
+  border-width: 4px;
+  outline-style: dashed;
+  outline-color: rgba(104, 117, 245);
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
