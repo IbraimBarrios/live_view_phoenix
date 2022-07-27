@@ -46,4 +46,15 @@ defmodule LiveViewPhoenixWeb.VolunteersLive do
         {:noreply, socket}
     end
   end
+
+  def handle_event("validate", %{"volunteer" => params}, socket) do
+    IO.puts("Si entro...")
+    IO.inspect(params)
+    changeset =
+      %Volunteer{}
+      |> Volunteers.change_volunteer(params)
+      |> Map.put(:action, :insert)
+
+    {:noreply, assign(socket, changeset: changeset)}
+  end
 end
