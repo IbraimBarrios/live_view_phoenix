@@ -55,4 +55,23 @@ defmodule LiveViewPhoenixWeb.VolunteersLive do
 
     {:noreply, assign(socket, changeset: changeset)}
   end
+
+  def handle_event("toggle-states", %{"id" => id}, socket) do
+    volunteer = Volunteers.get_volunteer!(id)
+
+    {:ok, _volunteer} =
+      Volunteers.update_volunteer(
+        volunteer, %{checked_out: !volunteer.checked_out}
+      )
+      volunteers = Volunteers.list_volunteers()
+
+      socket =
+        assign(socket,
+        volunteers: volunteers
+        )
+
+      :timer.sleep(500)
+
+    {:noreply, socket}
+  end
 end
