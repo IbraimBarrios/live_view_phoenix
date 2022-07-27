@@ -1,6 +1,6 @@
 <h1>Volunteer Check-In</h1>
 <div id="checkin">
-<%= f = form_for @changeset, "#", phx_submit: "save", class: "form-checkin"%>
+<%= f = form_for @changeset, "#", phx_submit: "save", phx_change: "validate", class: "form-checkin"%>
 <div class="field">
   <%= text_input f, :name, placeholder: "Name", autocomplete: "off" %>
   <%=error_tag f, :name %>
