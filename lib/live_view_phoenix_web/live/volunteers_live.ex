@@ -48,8 +48,6 @@ defmodule LiveViewPhoenixWeb.VolunteersLive do
   end
 
   def handle_event("validate", %{"volunteer" => params}, socket) do
-    IO.puts("Si entro...")
-    IO.inspect(params)
     changeset =
       %Volunteer{}
       |> Volunteers.change_volunteer(params)
