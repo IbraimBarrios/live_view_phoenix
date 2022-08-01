@@ -93,3 +93,15 @@
   font-size: 1.5rem;
   line-height: 2rem;
 }
+
+.get-quote-button{
+  background-color: #53aa41;
+  color: white;
+  padding: 4px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.field{
+  margin-bottom: 4px;
+}
