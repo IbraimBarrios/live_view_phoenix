@@ -5,13 +5,14 @@ defmodule LiveViewPhoenixWeb.SandboxLive do
 
   alias LiveViewPhoenixWeb.QuoteComponent
   alias LiveViewPhoenixWeb.SandboxCalculatorComponent
+  alias LiveViewPhoenixWeb.MyComponent
 
   def mount(_params, _session, socket) do
     {:ok, assign(socket, weight: nil, prece: nil)}
   end
 
   def render(assigns) do
-    ~L"""
+    ~H"""
     <h1> Build a sandbox </h1>
     <div id="sandbox">
 
@@ -22,6 +23,11 @@ defmodule LiveViewPhoenixWeb.SandboxLive do
       <%= if @weight do %>
         <%= live_component @socket, QuoteComponent, material: "sand", weight: @weight, price: @prece %>
       <% end %>
+
+      <!-- Otros ejemplos de como llamar a los componenetes -->
+      <MyComponent.quote material="sand" weight="10.0" price="2" hrs_until_expires="4"  />
+      <MyComponent.greet name="Jane" />
+
     </div>
     """
   end
