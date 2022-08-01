@@ -12,7 +12,8 @@ defmodule LiveViewPhoenixWeb.VolunteersLive do
     socket =
       assign(socket,
         volunteers: volunteers,
-        changeset: changeset
+        changeset: changeset,
+        recent_activity: nil
       )
 
     {:ok, socket}
@@ -99,7 +100,9 @@ defmodule LiveViewPhoenixWeb.VolunteersLive do
 
     socket =
       assign(socket,
-        volunteers: volunteers
+        volunteers: volunteers,
+        recent_activity: "#{volunteer.name} checked
+        #{if volunteer.checked_out, do: "out", else: "in"}!"
       )
 
     {:noreply, socket}
